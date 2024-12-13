@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f4f4f9;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    form {
+      max-width: 500px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .message {
+      text-align: center;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Courier Tracking Admin Panel</h1>
+  <form id="adminForm" enctype="multipart/form-data">
+    <label for="trackingID">Tracking ID:</label>
+    <input type="text" id="trackingID" placeholder="Enter Tracking ID" required>
+
+    <label for="status">Status:</label>
+    <select id="status">
+      <option value="Not-Delivered">Not-Delivered</option>
+      <option value="Delivered">Delivered</option>
+    </select>
+
+    <label for="location">Location:</label>
+    <input type="text" id="location" placeholder="Enter Location" required>
+
+    <label for="estimatedArrival">Estimated Arrival:</label>
+    <input type="date" id="estimatedArrival" required>
+
+    <label for="image">Upload Image:</label>
+    <input type="file" id="image" accept="image/*" required>
+
+    <button type="submit">Save</button>
+  </form>
+  <div class="message" id="message"></div>
+
+  <script>
+    const form = document.getElementById('adminForm');
+    const messageDiv = document.getElementById('message');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch('/update-data.php', {
+          method: 'POST',
+          body: formData,
+        });
+
+        const result = await response.text();
+        messageDiv.textContent = result;
+        messageDiv.style.color = 'green';
+
+        form.reset();
+      } catch (error) {
+        console.error(error);
+        messageDiv.textContent = 'Error updating data.';
+        messageDiv.style.color = 'red';
+      }
+    });
+  </script>
+</body>
+</html>

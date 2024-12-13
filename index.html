@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Courier Service</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background-size: cover;
+      background-image: url('assets/intro-bg.jpg');
+    }
+
+    .logo {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      width: 100px;
+      height: auto;
+    }
+
+    .container {
+      text-align: center;
+      flex-grow: 1;
+      padding: 50px 20px;
+    }
+
+    .intro-text {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #007BFF;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #333;
+      line-height: 1.6;
+      margin: 10px 0;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 30px;
+      color: white;
+      background: #007BFF;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: bold;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #0056b3;
+      transform: scale(1.1);
+    }
+
+    .faq-container {
+      max-width: 800px;
+      margin: 50px auto;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      overflow: hidden; /* Ensures content stays inside */
+      box-sizing: border-box; /* Includes padding in width */
+    }
+
+
+    .faq-title {
+      text-align: center;
+      font-size: 2rem;
+      color: #007BFF;
+      margin-bottom: 20px;
+    }
+
+    .faq-item {
+      border-bottom: 2px solid #eee;
+    }
+
+    .faq-question {
+      cursor: pointer;
+      padding: 15px;
+      font-size: 1.2rem;
+      color: #007BFF;
+      font-weight: bold;
+      background-color: #f0f8ff;
+      transition: background-color 0.3s ease;
+      border: none;
+      width: 100%;
+      text-align: left;
+    }
+
+    .faq-question:hover {
+      background-color: #cce4ff;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
+      padding: 0 15px;
+      font-size: 1rem;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .faq-answer.open {
+      max-height: 200px;
+      opacity: 1;
+      padding: 15px;
+    }
+
+    footer {
+      background-color: #f8f8f8;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .footer-section {
+      flex: 1;
+      min-width: 200px;
+      margin: 10px;
+    }
+
+    .footer-section h3 {
+      font-size: 16px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 8px;
+    }
+
+    .footer-section ul li a {
+      text-decoration: none;
+      color: #555;
+    }
+
+    .footer-section ul li a:hover {
+      color: #000;
+    }
+
+    .footer-bottom {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #666;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <img src="assets/logo.png" alt="Courier Service Logo" class="logo">
+  <div class="container">
+    <div class="intro-text">
+      <h1>Welcome to Our Courier Service</h1>
+      <p>At our courier service, we take pride in delivering seamless logistics solutions. Whether you're sending critical documents or valuable packages, our reliable and timely delivery services are tailored to meet your needs.</p>
+      <p>Partnering with trusted courier companies, we ensure secure handling, transparent tracking, and unmatched convenience, giving you peace of mind for all your shipping requirements.</p>
+      <a href="track.html" class="btn">Track Your Shipment</a>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="faq-container">
+      <h2 class="faq-title">FAQs</h2>
+      <div class="faq-item">
+        <div class="faq-question">Why is my package delayed?</div>
+        <div class="faq-answer">Your delivery may get delayed due to unforeseen circumstances. A new delivery timeframe will be shared with you when you track your shipment on our website. In case you have additional questions or concerns, please raise a support ticket from here.
+          You can contact us for further information +91-8092814641.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">What do I do if the tracking page doesn't show the expected date of arrival?</div>
+        <div class="faq-answer">You can wait for 24hrs and if the problem still continues, report us the problem on the Support page.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">What should I do if I am not available at the time of delivery?</div>
+        <div class="faq-answer">You can contact at +91 8092814641 and ask for futher details..</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">My shipment has been cancelled. What should I do?</div>
+        <div class="faq-answer">Please contact our support page to initiate the information or refund process.</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>Get in Touch</h3>
+        <ul>
+          <li><a href="support.html">Support</a></li>
+          <li><a href="query.html">Raise a Query</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Policies</h3>
+        <ul>
+          <li><a href="t&m.html">Terms & Conditions</a></li>
+          <li><a href="aboutus.html">About us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© Skylark Express Hazaribag | All Rights Reserved | Last Updated: 12/07/24</p>
+    </div>
+  </footer>
+
+  <script>
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      const answer = item.querySelector('.faq-answer');
+
+      question.addEventListener('click', () => {
+        const isOpen = answer.classList.contains('open');
+        document.querySelectorAll('.faq-answer').forEach(ans => ans.classList.remove('open'));
+        if (!isOpen) {
+          answer.classList.add('open');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
