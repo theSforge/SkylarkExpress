@@ -1,531 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap" rel="stylesheet">
-  <title>Courier Service</title>
-  <style>
-    :root {
-      --primary: #007BFF;
-      --secondary: #00ff88;
-      --dark: #1a1a1a;
-      --light: #f8f9fa;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Noto Serif', serif;
-      background: var(--dark);
-      color: var(--light);
-      overflow-x: hidden;
-      min-height: 100vh;
-    }
-
-    .toolbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      background: rgba(26, 26, 26, 0.95);
-      backdrop-filter: blur(10px);
-      padding: 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 1000;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .nav-logo {
-      width: 40px;
-      height: 40px;
-      animation: spin 10s linear infinite;
-    }
-
-    .nav-items {
-      display: flex;
-      gap: 2rem;
-    }
-
-    .nav-item {
-      color: var(--light);
-      text-decoration: none;
-      font-weight: 500;
-      position: relative;
-      padding: 0.5rem 1rem;
-      transition: all 0.3s ease;
-    }
-
-    .nav-item::before {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background: linear-gradient(45deg, var(--primary), var(--secondary));
-      transform: scaleX(0);
-      transform-origin: right;
-      transition: transform 0.3s ease;
-    }
-
-    .nav-item:hover::before {
-      transform: scaleX(1);
-      transform-origin: left;
-    }
-
-    .nav-item:hover {
-      color: var(--primary);
-    }
-
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-    }
-
-    .menu-toggle span {
-      width: 25px;
-      height: 3px;
-      background: var(--light);
-      transition: all 0.3s ease;
-    }
-
-    .background-animation {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
-      overflow: hidden;
-    }
-
-    .circle {
-      position: absolute;
-      border-radius: 50%;
-      background: linear-gradient(45deg, rgba(0, 123, 255, 0.1), rgba(0, 255, 136, 0.1));
-      animation: float 15s infinite;
-      pointer-events: none;
-    }
-
-    @keyframes float {
-      0% {
-        transform: translateY(0) rotate(0deg) scale(1);
-        opacity: 0.8;
-      }
-      50% {
-        transform: translateY(-100px) rotate(180deg) scale(1.2);
-        opacity: 0.4;
-      }
-      100% {
-        transform: translateY(0) rotate(360deg) scale(1);
-        opacity: 0.8;
-      }
-    }
-
-    @keyframes spin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
-    .content-wrapper {
-      position: relative;
-      z-index: 1;
-      margin-top: 73px;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 80px 20px;
-    }
-
-    .intro-text {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  padding: 40px;
-  margin-bottom: 50px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  animation: fadeInUp 1s ease-out;
-  transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Center aligns the button horizontally */
-  text-align: center; /* Optional: Center aligns the text */
-}
-
-    .intro-text:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(0, 123, 255, 0.2);
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    h1 {
-      font-size: 3.5rem;
-      margin-bottom: 30px;
-      background: linear-gradient(45deg, var(--primary), var(--secondary));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      background-size: 200% 200%;
-      animation: gradientText 8s infinite;
-    }
-
-    @keyframes gradientText {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    p {
-      font-size: 1.2rem;
-      line-height: 1.8;
-      margin-bottom: 20px;
-      color: rgba(255, 255, 255, 0.9);
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 15px 40px;
-      background: linear-gradient(45deg, var(--primary), var(--secondary));
-      color: white;
-      text-decoration: none;
-      border-radius: 50px;
-      font-weight: 600;
-      font-size: 1.1rem;
-      transition: all 0.3s ease;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-      transition: 0.6s;
-    }
-
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(0, 123, 255, 0.3);
-    }
-
-    .btn:hover::before {
-      left: 100%;
-    }
-
-    .faq-container {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border-radius: 20px;
-      padding: 40px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      animation: fadeInUp 1s ease-out 0.3s;
-    }
-
-    .faq-title {
-      font-size: 2.5rem;
-      margin-bottom: 30px;
-      background: linear-gradient(45deg, var(--primary), var(--secondary));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .faq-item {
-      margin-bottom: 15px;
-      border-radius: 10px;
-      overflow: hidden;
-    }
-
-    .faq-question {
-      padding: 20px;
-      background: rgba(255, 255, 255, 0.05);
-      color: var(--light);
-      cursor: pointer;
-      font-weight: 500;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: all 0.3s ease;
-    }
-
-    .faq-question:hover {
-      background: rgba(255, 255, 255, 0.1);
-    }
-
-    .faq-question::after {
-      content: '+';
-      font-size: 1.5rem;
-      transition: transform 0.3s ease;
-    }
-
-    .faq-question.active::after {
-      transform: rotate(45deg);
-    }
-
-    .faq-answer {
-      max-height: 0;
-      opacity: 0;
-      background: rgba(255, 255, 255, 0.05);
-      transition: all 0.3s ease;
-      padding: 0 20px;
-    }
-
-    .faq-answer.open {
-      max-height: 300px;
-      opacity: 1;
-      padding: 20px;
-    }
-
-    footer {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      padding: 50px 0;
-      margin-top: 50px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      text-align: center; /* Align all footer content to the center */
-    }
-
-    .footer-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-      display: flex;
-      flex-direction: column; /* Stack items vertically for better alignment */
-      align-items: center; /* Center-align all child elements */
-      gap: 20px;
-    }
-
-    .footer-section {
-      text-align: center; /* Center-align text inside each section */
-    }
-
-    .footer-section h3 {
-      color: var(--primary);
-      margin-bottom: 10px;
-      font-size: 1.2rem;
-    }
-
-    .footer-section ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .footer-section ul li {
-      margin-bottom: 10px;
-    }
-
-    .footer-section ul li a {
-      color: rgba(255, 255, 255, 0.7);
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-
-    .footer-section ul li a:hover {
-      color: var(--primary);
-    }
-
-    .footer-bottom {
-      text-align: center; /* Ensure footer bottom text is centered */
-      margin-top: 20px;
-      padding-top: 20px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      color: rgba(255, 255, 255, 0.5);
-    }
-
-
-    @media (max-width: 768px) {
-      .menu-toggle {
-        display: flex;
-      }
-
-      .nav-items {
-        position: fixed;
-        top: 73px;
-        left: 0;
-        right: 0;
-        background: rgba(26, 26, 26, 0.95);
-        flex-direction: column;
-        padding: 1rem;
-        gap: 1rem;
-        transform: translateY(-100%);
-        transition: transform 0.3s ease;
-      }
-
-      .nav-items.active {
-        transform: translateY(0);
-      }
-
-      h1 {
-        font-size: 2.5rem;
-      }
-
-      .container {
-        padding: 60px 20px;
-      }
-
-      .intro-text, .faq-container {
-        padding: 30px 20px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skylark Traking - Track your Courier</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <nav class="toolbar">
-    <img src="assets/logo.png" alt="Logo" class="nav-logo">
-    <div class="nav-items">
-      <a href="#" class="nav-item">Services</a>
-      <a href="#" class="nav-item">Contact us</a>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h2>SkylarkHazaribag</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+    <div class="mobile-menu">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
     </div>
-    <div class="menu-toggle">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </nav>
-
-  <div class="background-animation" id="backgroundAnimation"></div>
-  
-  <div class="content-wrapper">
-    <div class="container">
-      <div class="intro-text">
-        <h1>Welcome to Our Courier Service</h1>
-        <p>At our courier service, we take pride in delivering seamless logistics solutions. Whether you're sending critical documents or valuable packages, our reliable and timely delivery services are tailored to meet your needs.</p>
-        <p>Partnering with trusted courier companies, we ensure secure handling, transparent tracking, and unmatched convenience, giving you peace of mind for all your shipping requirements.</p>
-        <a href="track.html" class="btn">Track Your Shipment</a>
-      </div>
-
-      <div class="faq-container">
-        <h2 class="faq-title">FAQs</h2>
-        <div class="faq-item">
-          <div class="faq-question">Why is my package delayed?</div>
-          <div class="faq-answer">Your delivery may get delayed due to unforeseen circumstances. A new delivery timeframe will be shared with you when you track your shipment on our website. In case you have additional questions or concerns, please raise a support ticket from here.
-            You can contact us for further information +91-8092814641.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question">What do I do if the tracking page doesn't show the expected date of arrival?</div>
-          <div class="faq-answer">You can wait for 24hrs and if the problem still continues, report us the problem on the Support page.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question">What should I do if I am not available at the time of delivery?</div>
-          <div class="faq-answer">You can contact at +91 8092814641 and ask for if there are any other possible conditions for delivery.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question">My shipment has been cancelled. What should I do?</div>
-          <div class="faq-answer">Please contact our support page to initiate the information or refund process.</div>
-        </div>
-      </div>
-    </div>
-
-    <footer>
-      <div class="footer-container">
-        <div class="footer-section">
-          <h3>Get in Touch</h3>
-          <ul>
-            <li><a href="support.html">Support</a></li>
-            <li><a href="query.html">Raise a Query</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h3>Policies</h3>
-          <ul>
-            <li><a href="t&m.html">Terms & Conditions</a></li>
-            <li><a href="aboutus.html">About us</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>|© Skylark Express Hazaribag | All Rights Reserved |</p>
-      </div>
-    </footer>
-  </div>
-
-  <script>
-    function createCircle() {
-      const circle = document.createElement('div');
-      circle.classList.add('circle');
-      
-      const size = Math.random() * 150 + 50;
-      circle.style.width = `${size}px`;
-      circle.style.height = `${size}px`;
-      
-      circle.style.left = `${Math.random() * 100}%`;
-      circle.style.top = `${Math.random() * 100}%`;
-      
-      circle.style.animationDuration = `${Math.random() * 10 + 5}s`;
-      
-      document.getElementById('backgroundAnimation').appendChild(circle);
-      
-      setTimeout(() => {
-        circle.remove();
-      }, 15000);
-    }
-
-    setInterval(createCircle, 2000);
-
-    for(let i = 0; i < 10; i++) {
-      createCircle();
-    }
-
-    const faqQuestions = document.querySelectorAll('.faq-question');
     
-    faqQuestions.forEach(question => {
-      question.addEventListener('click', () => {
-        const answer = question.nextElementSibling;
-        const isOpen = answer.classList.contains('open');
-        
-        document.querySelectorAll('.faq-answer').forEach(ans => ans.classList.remove('open'));
-        document.querySelectorAll('.faq-question').forEach(q => q.classList.remove('active'));
-        
-        if (!isOpen) {
-          answer.classList.add('open');
-          question.classList.add('active');
-        }
-      });
-    });
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Track Your Package in Real-Time</h1>
+                <p>Enter your tracking ID below to get instant updates on your courier status</p>
+                
+                <div class="tracking-form">
+                    <div class="input-group">
+                        <input type="text" id="trackingId" placeholder="Enter Tracking ID (e.g., TRK123456789)" required>
+                        <button id="trackBtn" class="track-btn">Track Package</button>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-        }
-      });
-    });
+        <section id="trackingResults" class="tracking-results hidden">
+            <div class="container">
+                <div class="results-header">
+                    <h2>Tracking Results</h2>
+                    <button id="newSearchBtn" class="new-search-btn">New Search</button>
+                </div>
+                
+                <div class="package-info">
+                    <div class="info-card">
+                        <h3>Package Details</h3>
+                        <div class="detail-row">
+                            <span class="label">Tracking ID:</span>
+                            <span id="resultTrackingId" class="value"></span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="label">Current Status:</span>
+                            <span id="currentStatus" class="value status"></span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="label">Current Location:</span>
+                            <span id="currentLocation" class="value"></span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="label">Last Updated:</span>
+                            <span id="lastUpdated" class="value"></span>
+                        </div>
+                    </div>
+                    
+                    <!-- Package Image Section -->
+                    <div id="packageImageCard" class="info-card package-image-card hidden">
+                        <h3>Package Image</h3>
+                        <div class="image-container">
+                            <div id="imageLoading" class="image-loading hidden">
+                                <div class="loading-spinner">
+                                    <div class="spinner"></div>
+                                </div>
+                                <p>Loading image...</p>
+                            </div>
+                            <img id="packageImage" class="package-image hidden" alt="Package Image" />
+                            <div id="imageError" class="image-error hidden">
+                                <p>No image available for this package</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    document.querySelectorAll('.intro-text, .faq-container, .footer-section').forEach((el) => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(20px)';
-      el.style.transition = 'all 0.6s ease-out';
-      observer.observe(el);
-    });
-  </script>
+        <section class="features">
+            <div class="container">
+                <h2>Why Choose Us?</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">📍</div>
+                        <h3>Real-Time Tracking</h3>
+                        <p>Get live updates on your package location and status</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔒</div>
+                        <h3>Secure Handling</h3>
+                        <p>Your packages are safe with our secure delivery process</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📱</div>
+                        <h3>Easy Tracking</h3>
+                        <p>Simple interface to track your packages anytime, anywhere</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>SkylarkHazaribag</h3>
+                    <p>Your trusted courier tracking partner</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p>Email: info@CourierTracking.com</p>
+                    <p>Phone: +1 (555) 123-4567</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 SkylarkHazaribag. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="loadingSpinner" class="loading-spinner hidden">
+        <div class="spinner"></div>
+        <p>Searching for your package...</p>
+    </div>
+
+    <div id="errorModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Error</h3>
+            <p id="errorMessage"></p>
+        </div>
+    </div>
+
+    <!-- Firebase SDK (loaded before app code) -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
+    <!-- Unified single config file at project root -->
+    <script src="firebase-config.js"></script>
+    <!-- App Scripts -->
+    <script src="script.js"></script>
 </body>
 </html>

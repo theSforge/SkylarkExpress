@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - SkylarkHazaribag</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h2>SkylarkHazaribag</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="contact.html" class="nav-link active">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+    <div class="mobile-menu">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+    </div>
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <h1>Contact Us</h1>
+                <p>Get in touch with our team for support, inquiries, or feedback</p>
+            </div>
+        </section>
+
+        <section class="contact-content">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h2>Get In Touch</h2>
+                        <p>We're here to help! Whether you have questions about tracking, need support, or want to learn more about our services, don't hesitate to reach out.</p>
+                        
+                        <div class="contact-methods">
+                            <div class="contact-method">
+                                <div class="method-icon">📞</div>
+                                <div class="method-details">
+                                    <h4>Phone Support</h4>
+                                    <p>+1 (555) 123-4567</p>
+                                    <span class="availability">Available 24/7</span>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-method">
+                                <div class="method-icon">📧</div>
+                                <div class="method-details">
+                                    <h4>Email Support</h4>
+                                    <p>info@swifttrack.com</p>
+                                    <span class="availability">Response within 2 hours</span>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-method">
+                                <div class="method-icon">💬</div>
+                                <div class="method-details">
+                                    <h4>Live Chat</h4>
+                                    <p>Available on our website</p>
+                                    <span class="availability">Mon-Fri 8AM-8PM EST</span>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-method">
+                                <div class="method-icon">📍</div>
+                                <div class="method-details">
+                                    <h4>Office Address</h4>
+                                    <p>123 Logistics Avenue<br>Suite 456<br>New York, NY 10001</p>
+                                    <span class="availability">Mon-Fri 9AM-6PM EST</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form-section">
+                        <h2>Send Us a Message</h2>
+                        <form id="contactForm" class="contact-form">
+                            <div class="form-group">
+                                <label for="name">Full Name *</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject">Subject *</label>
+                                <select id="subject" name="subject" required>
+                                    <option value="">Select a subject</option>
+                                    <option value="tracking">Tracking Issue</option>
+                                    <option value="delivery">Delivery Problem</option>
+                                    <option value="billing">Billing Question</option>
+                                    <option value="service">Service Inquiry</option>
+                                    <option value="complaint">Complaint</option>
+                                    <option value="feedback">Feedback</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="trackingId">Tracking ID (if applicable)</label>
+                                <input type="text" id="trackingId" name="trackingId" placeholder="e.g., TRK123456789">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Message *</label>
+                                <textarea id="message" name="message" rows="5" required placeholder="Please describe your inquiry or issue in detail..."></textarea>
+                            </div>
+                            
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="newsletter" name="newsletter">
+                                    <span class="checkmark"></span>
+                                    Subscribe to our newsletter for updates and promotions
+                                </label>
+                            </div>
+                            
+                            <button type="submit" class="submit-btn">Send Message</button>
+                        </form>
+                        
+                        <div id="formSuccess" class="form-message success hidden">
+                            <div class="message-icon">✅</div>
+                            <h3>Message Sent Successfully!</h3>
+                            <p>Thank you for contacting us. We'll get back to you within 2 hours.</p>
+                        </div>
+                        
+                        <div id="formError" class="form-message error hidden">
+                            <div class="message-icon">❌</div>
+                            <h3>Error Sending Message</h3>
+                            <p id="errorText">Something went wrong. Please try again or contact us directly.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-section">
+                    <h2>Frequently Asked Questions</h2>
+                    <div class="faq-grid">
+                        <div class="faq-item">
+                            <h4>How do I track my package?</h4>
+                            <p>Simply enter your tracking ID on our homepage. You'll get real-time updates on your package location and status.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>What if my tracking ID doesn't work?</h4>
+                            <p>Double-check the tracking ID for typos. If it still doesn't work, contact us with your order details and we'll help locate your package.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>How long does delivery take?</h4>
+                            <p>Delivery times vary by service: Standard (3-5 days), Express (1-2 days), Same Day (within 24 hours).</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>Can I change my delivery address?</h4>
+                            <p>Address changes are possible before the package is out for delivery. Contact us immediately with your tracking ID.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>What if my package is damaged?</h4>
+                            <p>Report damaged packages within 24 hours of delivery. We'll investigate and provide compensation if applicable.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>Do you offer insurance?</h4>
+                            <p>Yes, all packages include basic insurance. Additional coverage is available for valuable items.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>SkylarkHazaribag</h3>
+                    <p>Your trusted courier tracking partner</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p>Email: info@CourierTracking.com</p>
+                    <p>Phone: +1 (555) 123-4567</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 SkylarkHazaribag. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

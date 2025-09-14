@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Package - SkylarkHazaribag</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h2>SkylarkHazaribag</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="tracking.html" class="nav-link active">Track</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="mobile-menu">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+        <a href="tracking.html">Track</a>
+    </div>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <h1>Track Your Package</h1>
+                <p>Enter your tracking ID to get real-time updates</p>
+            </div>
+        </section>
+
+        <section class="tracking-section">
+            <div class="container">
+                <div class="tracking-form-container">
+                    <div class="tracking-form">
+                        <h2>Enter Tracking ID</h2>
+                        <div class="input-group">
+                            <input type="text" id="trackingId" placeholder="Enter your tracking ID (e.g., TRK123456789)" maxlength="20">
+                            <button id="trackBtn" class="track-btn">
+                                <span class="btn-text">Track Package</span>
+                                <div id="loadingSpinner" class="loading-spinner hidden">
+                                    <div class="spinner"></div>
+                                </div>
+                            </button>
+                        </div>
+                        <p class="tracking-hint">Try demo tracking IDs: TRK123456789 or TRK987654321</p>
+                    </div>
+                </div>
+
+                <!-- Tracking Results Section -->
+                <div id="trackingResults" class="tracking-results hidden">
+                    <div class="results-header">
+                        <h2>Tracking Results</h2>
+                        <button id="newSearchBtn" class="new-search-btn">New Search</button>
+                    </div>
+                    
+                    <div class="package-info">
+                        <div class="info-card">
+                            <h3>Package Details</h3>
+                            <div class="detail-row">
+                                <span class="label">Tracking ID:</span>
+                                <span id="resultTrackingId" class="value"></span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="label">Current Status:</span>
+                                <span id="currentStatus" class="value status"></span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="label">Current Location:</span>
+                                <span id="currentLocation" class="value"></span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="label">Recipient:</span>
+                                <span id="recipient" class="value"></span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="label">Destination:</span>
+                                <span id="destination" class="value"></span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="label">Estimated Delivery:</span>
+                                <span id="estimatedDelivery" class="value"></span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="label">Last Updated:</span>
+                                <span id="lastUpdated" class="value"></span>
+                            </div>
+                        </div>
+                        
+                        <!-- Package Image Section -->
+                        <div id="packageImageCard" class="info-card package-image-card hidden">
+                            <h3>Package Image</h3>
+                            <div class="image-container">
+                                <div id="imageLoading" class="image-loading hidden">
+                                    <div class="loading-spinner">
+                                        <div class="spinner"></div>
+                                    </div>
+                                    <p>Loading image...</p>
+                                </div>
+                                <img id="packageImage" class="package-image hidden" alt="Package Image" />
+                                <div id="imageError" class="image-error hidden">
+                                    <p>No image available for this package</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Error Modal -->
+    <div id="errorModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Error</h3>
+            <p id="errorMessage"></p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>SkylarkHazaribag</h3>
+                    <p>Your trusted courier tracking partner</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="tracking.html">Track Package</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p>Email: info@skylarktracking.com</p>
+                    <p>Phone: +91 8092814641</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 SkylarkHazaribag. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Firebase SDK (added so tracking page can access Firestore and Storage) -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
